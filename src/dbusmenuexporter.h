@@ -24,12 +24,11 @@
 // Qt
 #include <QtCore/QObject>
 #include <QtDBus/QDBusConnection>
+#include <QAction>
+#include <QMenu>
 
 // Local
 #include <dbusmenu_export.h>
-
-class QAction;
-class QMenu;
 
 class DBusMenuExporterPrivate;
 

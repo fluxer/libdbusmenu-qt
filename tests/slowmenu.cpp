@@ -21,6 +21,7 @@
 #include <slowmenu.moc>
 
 #include <dbusmenuexporter.h>
+#include <slowmenu.h>
 
 #include <QtDBus>
 #include <QtGui>

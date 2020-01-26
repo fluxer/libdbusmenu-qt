@@ -22,6 +22,8 @@
 #include "dbusmenuimportertest.h"
 
 // Qt
+#include <QTimer>
+#include <QProcess>
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
@@ -340,4 +342,4 @@ void DBusMenuImporterTest::testDisabledItem()
     QVERIFY(outputAction->isEnabled());
 }
 
-#include "dbusmenuimportertest.moc"
+#include "moc_dbusmenuimportertest.cpp"

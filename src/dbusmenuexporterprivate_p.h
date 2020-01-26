@@ -30,8 +30,8 @@
 #include <QtCore/QMap>
 #include <QtCore/QSet>
 #include <QtCore/QVariant>
-
-class QMenu;
+#include <QtCore/QTimer>
+#include <QMenu>
 
 class DBusMenuExporterDBus;
 

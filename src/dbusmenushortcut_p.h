@@ -24,12 +24,10 @@
 // Qt
 #include <QtCore/QMetaType>
 #include <QtCore/QStringList>
+#include <QKeySequence>
 
 // Local
 #include <dbusmenu_export.h>
-
-
-class QKeySequence;
 
 class DBUSMENU_EXPORT DBusMenuShortcut : public QList<QStringList>
 {

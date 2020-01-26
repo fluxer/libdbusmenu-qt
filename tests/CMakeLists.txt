@@ -1,6 +1,3 @@
-if (NOT USE_QT5)
-    qt4_automoc(slowmenu.cpp)
-endif()
 add_executable(slowmenu slowmenu.cpp)
 
 if (NOT USE_QT5)
@@ -8,7 +5,7 @@ if (NOT USE_QT5)
         ${QT_QTGUI_LIBRARIES}
         ${QT_QTDBUS_LIBRARIES}
         ${QT_QTCORE_LIBRARIES}
-        dbusmenu-qt
+        dbusmenu-${QT_SUFFIX}
     )
 
     set(test_LIBRARIES
@@ -16,7 +13,7 @@ if (NOT USE_QT5)
         ${QT_QTCORE_LIBRARY}
         ${QT_QTDBUS_LIBRARY}
         ${QT_QTTEST_LIBRARY}
-        dbusmenu-qt
+        dbusmenu-${QT_SUFFIX}
     )
 
     include_directories(
@@ -77,10 +74,6 @@ set(dbusmenuexportertest_SRCS
     testutils.cpp
     )
 
-if (NOT USE_QT5)
-    qt4_automoc(${dbusmenuexportertest_SRCS})
-endif()
-
 add_test_executable(dbusmenuexportertest ${dbusmenuexportertest_SRCS})
 
 target_link_libraries(dbusmenuexportertest
@@ -94,10 +87,6 @@ set(dbusmenuimportertest_SRCS
     testutils.cpp
     )
 
-if (NOT USE_QT5)
-    qt4_automoc(${dbusmenuimportertest_SRCS})
-endif()
-
 add_test_executable(dbusmenuimportertest ${dbusmenuimportertest_SRCS})
 
 target_link_libraries(dbusmenuimportertest
@@ -109,10 +98,6 @@ target_link_libraries(dbusmenuimportertest
 set(dbusmenushortcuttest_SRCS
     dbusmenushortcuttest.cpp
     )
-
-if (NOT USE_QT5)
-    qt4_automoc(${dbusmenushortcuttest_SRCS})
-endif()
 
 add_test_executable(dbusmenushortcuttest ${dbusmenushortcuttest_SRCS})
 

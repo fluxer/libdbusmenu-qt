@@ -25,11 +25,10 @@
 #include <QtCore/QList>
 #include <QtCore/QStringList>
 #include <QtCore/QVariant>
+#include <QtDBus/QDBusArgument>
 
 // Local
 #include <dbusmenu_export.h>
-
-class QDBusArgument;
 
 //// DBusMenuItem
 /**

@@ -23,9 +23,8 @@
 
 #include <QEvent>
 #include <QObject>
-
-class QAction;
-class QMenu;
+#include <QAction>
+#include <QMenu>
 
 class DBusMenuExporter;
 

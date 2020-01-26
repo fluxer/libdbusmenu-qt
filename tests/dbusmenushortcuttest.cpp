@@ -30,6 +30,7 @@
 
 QTEST_MAIN(DBusMenuShortcutTest)
 
+QT_BEGIN_NAMESPACE
 namespace QTest
 {
 template<>
@@ -45,6 +46,7 @@ char *toString(const DBusMenuShortcut &dmShortcut)
     return qstrdup(ba.data());
 }
 }
+QT_END_NAMESPACE
 
 DBusMenuShortcut createKeyList(const QString& txt)
 {
@@ -82,4 +84,4 @@ void DBusMenuShortcutTest::testConverter()
     QCOMPARE(sequence.toString(), keySequence.toString());
 }
 
-#include "dbusmenushortcuttest.moc"
+#include "moc_dbusmenushortcuttest.cpp"

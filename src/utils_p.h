@@ -21,7 +21,7 @@
 #ifndef UTILS_P_H
 #define UTILS_P_H
 
-class QString;
+#include <QtCore/QString>
 
 /**
  * Swap mnemonic char: Qt uses '&', while dbusmenu uses '_'

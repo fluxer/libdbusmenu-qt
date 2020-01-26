@@ -52,7 +52,7 @@ public:
     void setStatus(const QString &status);
 
 public Q_SLOTS:
-    Q_NOREPLY void Event(int id, const QString &eventId, const QDBusVariant &data, uint timestamp);
+    void Event(int id, const QString &eventId, const QDBusVariant &data, uint timestamp);
     QDBusVariant GetProperty(int id, const QString &property);
     uint GetLayout(int parentId, int recursionDepth, const QStringList &propertyNames, DBusMenuLayoutItem &item);
     DBusMenuItemList GetGroupProperties(const QList<int> &ids, const QStringList &propertyNames);

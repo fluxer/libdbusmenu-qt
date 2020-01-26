@@ -17,7 +17,7 @@ if (NOT USE_QT5)
         )
 
     target_link_libraries(dbusmenubench-qtapp
-        dbusmenu-qt
+        dbusmenu-${QT_SUFFIX}
         ${QT_QTGUI_LIBRARY}
         ${QT_QTCORE_LIBRARY}
         ${QT_QTDBUS_LIBRARY}

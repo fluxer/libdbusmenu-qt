@@ -24,6 +24,7 @@
 #include <QDBusMessage>
 #include <QMenu>
 #include <QVariant>
+#include <QEvent>
 
 // Local
 #include "dbusmenuadaptor.h"
@@ -183,4 +184,4 @@ QString DBusMenuExporterDBus::status() const
 }
 
 
-#include "dbusmenuexporterdbus_p.moc"
+#include "moc_dbusmenuexporterdbus_p.cpp"

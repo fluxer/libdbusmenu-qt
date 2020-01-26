@@ -23,16 +23,15 @@
 
 // Qt
 #include <QtCore/QObject>
+#include <QtDBus/QDBusAbstractInterface>
+#include <QtDBus/QDBusPendingCallWatcher>
+#include <QtDBus/QDBusVariant>
+#include <QAction>
+#include <QIcon>
+#include <QMenu>
 
 // Local
 #include <dbusmenu_export.h>
-
-class QAction;
-class QDBusAbstractInterface;
-class QDBusPendingCallWatcher;
-class QDBusVariant;
-class QIcon;
-class QMenu;
 
 class DBusMenuImporterPrivate;
 

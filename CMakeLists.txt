@@ -1,6 +1,9 @@
 project(dbusmenu-qt)
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.0.2)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
+set(CMAKE_AUTOMOC TRUE)
+set(CMAKE_AUTOUIC TRUE)
+set(CMAKE_AUTORCC TRUE)
 
 # Build options
 option(WITH_DOC "Build documentation (requires Doxygen)" ON)
@@ -25,17 +28,33 @@ set(dbusmenu_qt_lib_PATCH_VERSION 0)
 set(dbusmenu_qt_lib_VERSION ${dbusmenu_qt_lib_SOVERSION}.${dbusmenu_qt_lib_API_VERSION}.${dbusmenu_qt_lib_PATCH_VERSION})
 
 # Check if we want to explicitly select the Qt version to be used or autodetect
-if (NOT USE_QT4 AND NOT USE_QT5)
+if (NOT USE_QT4 AND NOT USE_QT5 AND NOT USE_KATIE)
     # Autodetect, prefering Qt5
-    message(STATUS "Autodetecting Qt version to use")
+    message(STATUS "Autodetecting Qt/Katie version to use")
     find_package(Qt5Widgets QUIET)
     if (Qt5Widgets_FOUND)
         set(USE_QT5 TRUE)
     endif()
+    find_package(Katie QUIET)
+    if (Katie_FOUND)
+        set(USE_KATIE TRUE)
+        set(USE_QT5 FALSE)
+    endif()
 endif()
 
 # Detect for which Qt version we're building
-if (USE_QT5)
+if (USE_KATIE)
+    find_package(Katie REQUIRED)
+    include_directories(
+        ${QT_INCLUDE_DIR}
+        ${QT_QTCORE_INCLUDE_DIR}
+        ${QT_QTDBUS_INCLUDE_DIR}
+        ${QT_QTGUI_INCLUDE_DIR}
+    )
+    add_definitions(${QT_DEFINITIONS})
+
+    set(QT_SUFFIX "katie")
+elseif (USE_QT5)
     find_package(Qt5Widgets REQUIRED)
     find_package(Qt5DBus REQUIRED)
     include_directories(${Qt5Widgets_INCLUDE_DIRS} ${Qt5DBus_INCLUDE_DIRS})

@@ -31,4 +31,4 @@ void waitForDeferredDeletes()
     }
 }
 
-#include "testutils.moc"
+#include "moc_testutils.cpp"
