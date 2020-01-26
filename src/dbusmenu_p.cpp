@@ -45,25 +45,15 @@ DBusMenu::~DBusMenu()
 
 bool DBusMenu::eventFilter(QObject *, QEvent *event)
 {
-    QActionEvent *actionEvent = 0;
     switch (event->type()) {
     case QEvent::ActionAdded:
-    case QEvent::ActionChanged:
-    case QEvent::ActionRemoved:
-        actionEvent = static_cast<QActionEvent *>(event);
-        break;
-    default:
-        return false;
-    }
-    switch (event->type()) {
-    case QEvent::ActionAdded:
-        addAction(actionEvent->action());
+        addAction(static_cast<QActionEvent *>(event)->action());
         break;
     case QEvent::ActionChanged:
-        updateAction(actionEvent->action());
+        updateAction(static_cast<QActionEvent *>(event)->action());
         break;
     case QEvent::ActionRemoved:
-        removeAction(actionEvent->action());
+        removeAction(static_cast<QActionEvent *>(event)->action());
         break;
     default:
         break;
