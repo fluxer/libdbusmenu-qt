@@ -1,13 +1,4 @@
-add_executable(slowmenu slowmenu.cpp)
-
 if (NOT USE_QT5)
-    target_link_libraries(slowmenu
-        ${QT_QTGUI_LIBRARIES}
-        ${QT_QTDBUS_LIBRARIES}
-        ${QT_QTCORE_LIBRARIES}
-        dbusmenu-${QT_SUFFIX}
-    )
-
     set(test_LIBRARIES
         ${QT_QTGUI_LIBRARY}
         ${QT_QTCORE_LIBRARY}
@@ -25,13 +16,6 @@ if (NOT USE_QT5)
         )
 else()
     find_package(Qt5Test REQUIRED)
-
-    target_link_libraries(slowmenu
-        ${Qt5Gui_LIBRARIES}
-        ${Qt5Core_LIBRARIES}
-        ${Qt5DBus_LIBRARIES}
-        dbusmenu-qt5
-    )
 
     set(test_LIBRARIES
         ${Qt5Gui_LIBRARIES}
@@ -67,6 +51,22 @@ endmacro(create_check_target)
 
 enable_testing()
 
+add_executable(slowmenu slowmenu.cpp)
+if (NOT USE_QT5)
+    target_link_libraries(slowmenu
+        ${QT_QTGUI_LIBRARIES}
+        ${QT_QTDBUS_LIBRARIES}
+        ${QT_QTCORE_LIBRARIES}
+        dbusmenu-${QT_SUFFIX}
+    )
+else()
+    target_link_libraries(slowmenu
+        ${Qt5Gui_LIBRARIES}
+        ${Qt5Core_LIBRARIES}
+        ${Qt5DBus_LIBRARIES}
+        dbusmenu-qt5
+    )
+endif()
 
 # dbusmenuexportertest
 set(dbusmenuexportertest_SRCS

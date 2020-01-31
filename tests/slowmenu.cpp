@@ -18,14 +18,15 @@
    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
    Boston, MA 02110-1301, USA.
 */
-#include <slowmenu.moc>
 
-#include <dbusmenuexporter.h>
-#include <slowmenu.h>
-
+// Qt
 #include <QtDBus>
 #include <QtGui>
 #include <QApplication>
+
+// Local
+#include "dbusmenuexporter.h"
+#include "slowmenu.h"
 
 static const char *TEST_SERVICE = "org.kde.dbusmenu-qt-test";
 static const char *TEST_OBJECT_PATH = "/TestMenuBar";
@@ -57,3 +58,5 @@ int main(int argc, char** argv)
     qDebug() << "Looping";
     return app.exec();
 }
+
+#include <slowmenu.moc>
