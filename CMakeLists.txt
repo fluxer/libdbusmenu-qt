@@ -27,23 +27,8 @@ set(dbusmenu_qt_lib_PATCH_VERSION 0)
 
 set(dbusmenu_qt_lib_VERSION ${dbusmenu_qt_lib_SOVERSION}.${dbusmenu_qt_lib_API_VERSION}.${dbusmenu_qt_lib_PATCH_VERSION})
 
-# Check if we want to explicitly select the Qt version to be used or autodetect
-if (NOT USE_QT4 AND NOT USE_QT5 AND NOT USE_KATIE)
-    # Autodetect, prefering Qt5
-    message(STATUS "Autodetecting Qt/Katie version to use")
-    find_package(Qt5Widgets QUIET)
-    if (Qt5Widgets_FOUND)
-        set(USE_QT5 TRUE)
-    endif()
-    find_package(Katie QUIET)
-    if (Katie_FOUND)
-        set(USE_KATIE TRUE)
-        set(USE_QT5 FALSE)
-    endif()
-endif()
-
-# Detect for which Qt version we're building
-if (USE_KATIE)
+# Detect for which version we're building
+if (NOT USE_QT4)
     find_package(Katie REQUIRED)
     include_directories(
         ${QT_INCLUDE_DIR}
@@ -54,16 +39,6 @@ if (USE_KATIE)
     add_definitions(${QT_DEFINITIONS})
 
     set(QT_SUFFIX "katie")
-elseif (USE_QT5)
-    find_package(Qt5Widgets REQUIRED)
-    find_package(Qt5DBus REQUIRED)
-    include_directories(${Qt5Widgets_INCLUDE_DIRS} ${Qt5DBus_INCLUDE_DIRS})
-    find_package(Qt5Core REQUIRED)
-    set(CMAKE_AUTOMOC ON)
-    set(CMAKE_AUTOMOC_RELAXED_MODE ON)
-    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
-    set(QT_SUFFIX "qt5")
 else()
     find_package(Qt4 REQUIRED)
     include_directories(

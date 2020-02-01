@@ -1,38 +1,18 @@
-if (NOT USE_QT5)
-    set(test_LIBRARIES
-        ${QT_QTGUI_LIBRARY}
-        ${QT_QTCORE_LIBRARY}
-        ${QT_QTDBUS_LIBRARY}
-        ${QT_QTTEST_LIBRARY}
-        dbusmenu-${QT_SUFFIX}
-    )
+set(test_LIBRARIES
+    ${QT_QTGUI_LIBRARY}
+    ${QT_QTCORE_LIBRARY}
+    ${QT_QTDBUS_LIBRARY}
+    ${QT_QTTEST_LIBRARY}
+    dbusmenu-${QT_SUFFIX}
+)
 
-    include_directories(
-        ${CMAKE_CURRENT_SOURCE_DIR}/../src
-        ${CMAKE_CURRENT_BINARY_DIR}/../src
-        ${CMAKE_CURRENT_BINARY_DIR}
-        ${QT_QTTEST_INCLUDE_DIR}
-        ${QT_QTDBUS_INCLUDE_DIR}
-        )
-else()
-    find_package(Qt5Test REQUIRED)
-
-    set(test_LIBRARIES
-        ${Qt5Gui_LIBRARIES}
-        ${Qt5Core_LIBRARIES}
-        ${Qt5DBus_LIBRARIES}
-        ${Qt5Test_LIBRARIES}
-        dbusmenu-qt5
-    )
-
-    include_directories(
-        ${CMAKE_CURRENT_SOURCE_DIR}/../src
-        ${CMAKE_CURRENT_BINARY_DIR}/../src
-        ${CMAKE_CURRENT_BINARY_DIR}
-        ${Qt5Test_INCLUDE_DIRS}
-        ${Qt5DBus_INCLUDE_DIRS}
-        )
-endif()
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+    ${CMAKE_CURRENT_BINARY_DIR}/../src
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${QT_QTTEST_INCLUDE_DIR}
+    ${QT_QTDBUS_INCLUDE_DIR}
+)
 
 # Macros to create "check" target
 set(_test_executable_list "")
@@ -52,21 +32,12 @@ endmacro(create_check_target)
 enable_testing()
 
 add_executable(slowmenu slowmenu.cpp)
-if (NOT USE_QT5)
-    target_link_libraries(slowmenu
-        ${QT_QTGUI_LIBRARIES}
-        ${QT_QTDBUS_LIBRARIES}
-        ${QT_QTCORE_LIBRARIES}
-        dbusmenu-${QT_SUFFIX}
-    )
-else()
-    target_link_libraries(slowmenu
-        ${Qt5Gui_LIBRARIES}
-        ${Qt5Core_LIBRARIES}
-        ${Qt5DBus_LIBRARIES}
-        dbusmenu-qt5
-    )
-endif()
+target_link_libraries(slowmenu
+    ${QT_QTGUI_LIBRARIES}
+    ${QT_QTDBUS_LIBRARIES}
+    ${QT_QTCORE_LIBRARIES}
+    dbusmenu-${QT_SUFFIX}
+)
 
 # dbusmenuexportertest
 set(dbusmenuexportertest_SRCS

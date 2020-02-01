@@ -1,4 +1,12 @@
-libdbusmenu-qt (0.9.3+16.04.20160218-0ubuntu1) xenial; urgency=medium
+libdbusmenu-qt (0.9.3+17.04.20200201-0ubuntu1) xenial; urgency=medium
+
+  [ Nick Dedekind ]
+  * Ported to Katie
+  * Dropped Qt5 port
+
+ -- Ivailo Monev <xakepa10@gmail.com>  Sat, 01 Feb 2020 10:33:05 +0000
+
+ibdbusmenu-qt (0.9.3+16.04.20160218-0ubuntu1) xenial; urgency=medium
 
   [ Nick Dedekind ]
   * Ported tests to Qt5.
