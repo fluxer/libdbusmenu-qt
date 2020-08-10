@@ -29,8 +29,6 @@ macro(create_check_target)
         DEPENDS ${_test_executable_list})
 endmacro(create_check_target)
 
-enable_testing()
-
 add_executable(slowmenu slowmenu.cpp)
 target_link_libraries(slowmenu
     ${QT_QTGUI_LIBRARIES}

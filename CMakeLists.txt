@@ -101,10 +101,14 @@ install(FILES ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc
     )
 
 add_subdirectory(src)
-add_subdirectory(tests)
 add_subdirectory(tools)
 
-if(WITH_DOC)
+if (ENABLE_TESTING)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+
+if (WITH_DOC)
     configure_file(Doxyfile.in ${CMAKE_BINARY_DIR}/Doxyfile @ONLY)
 
     add_custom_target(doc ALL doxygen
