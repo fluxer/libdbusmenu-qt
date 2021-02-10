@@ -11,7 +11,6 @@ include_directories(
     ${QT_QTCORE_INCLUDE_DIR}
     ${QT_QTGUI_INCLUDE_DIR}
     ${QT_QTDBUS_INCLUDE_DIR}
-    ${QJSON_INCLUDE_DIR}
 )
 
 target_link_libraries(dbusmenubench-qtapp
@@ -19,5 +18,4 @@ target_link_libraries(dbusmenubench-qtapp
     ${QT_QTGUI_LIBRARY}
     ${QT_QTCORE_LIBRARY}
     ${QT_QTDBUS_LIBRARY}
-    ${QJSON_LIBRARIES}
 )

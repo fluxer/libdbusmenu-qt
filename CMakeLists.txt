@@ -1,6 +1,5 @@
 project(dbusmenu-qt)
 cmake_minimum_required(VERSION 3.0.2)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTOUIC TRUE)
 set(CMAKE_AUTORCC TRUE)
@@ -27,29 +26,16 @@ set(dbusmenu_qt_lib_PATCH_VERSION 0)
 
 set(dbusmenu_qt_lib_VERSION ${dbusmenu_qt_lib_SOVERSION}.${dbusmenu_qt_lib_API_VERSION}.${dbusmenu_qt_lib_PATCH_VERSION})
 
-# Detect for which version we're building
-if (NOT USE_QT4)
-    find_package(Katie REQUIRED)
-    include_directories(
-        ${QT_INCLUDE_DIR}
-        ${QT_QTCORE_INCLUDE_DIR}
-        ${QT_QTDBUS_INCLUDE_DIR}
-        ${QT_QTGUI_INCLUDE_DIR}
-    )
-    add_definitions(${QT_DEFINITIONS})
+find_package(Katie REQUIRED)
+include_directories(
+    ${QT_INCLUDE_DIR}
+    ${QT_QTCORE_INCLUDE_DIR}
+    ${QT_QTDBUS_INCLUDE_DIR}
+    ${QT_QTGUI_INCLUDE_DIR}
+)
+add_definitions(${QT_DEFINITIONS})
 
-    set(QT_SUFFIX "katie")
-else()
-    find_package(Qt4 REQUIRED)
-    include_directories(
-      ${QT_INCLUDE_DIR}
-      ${QT_QTCORE_INCLUDE_DIR}
-      ${QT_QTDBUS_INCLUDE_DIR}
-      ${QT_QTGUI_INCLUDE_DIR}
-      )
-
-    set(QT_SUFFIX "qt")
-endif()
+set(QT_SUFFIX "katie")
 
 include (CheckCXXCompilerFlag)
 # Check some compiler flags

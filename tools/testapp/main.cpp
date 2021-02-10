@@ -24,11 +24,7 @@
 #include <QFile>
 #include <QMenu>
 
-#ifndef QT_KATIE
-#  include <qjson/parser.h>
-#else
-#  include <QJsonDocument>
-#endif
+#include <QJsonDocument>
 
 #include <dbusmenuexporter.h>
 
@@ -71,24 +67,13 @@ void initMenu(QMenu *menu, const QString &fileName)
         return;
     }
 
-#ifndef QT_KATIE
-    QJson::Parser parser;
-    bool ok;
-    QVariant tree = parser.parse(&file, &ok);
-    if (!ok) {
+    QJsonDocument json = QJsonDocument::fromJson(file.readAll());
+    if (json.isNull()) {
         qCritical() << "Could not parse json data from" << fileName;
         return;
     }
-#else
-    QJsonParseError error;
-    QVariant tree = QJsonDocument::fromJson(file.readAll(), &error).toVariant();
-    if (error.error != QJsonParseError::NoError) {
-        qCritical() << "Could not parse json data from" << fileName;
-        return;
-    }
-#endif
 
-    QVariantList list = tree.toList();
+    QVariantList list = json.toVariant().toList();
     Q_FOREACH(const QVariant &item, list) {
         createMenuItem(menu, item);
     }
