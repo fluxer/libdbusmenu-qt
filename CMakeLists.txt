@@ -60,31 +60,12 @@ set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 set(CMAKECONFIG_INSTALL_DIR "${LIB_DESTINATION}/cmake/dbusmenu-${QT_SUFFIX}")
 set(INCLUDE_INSTALL_DIR "include/dbusmenu-${QT_SUFFIX}")
 
-# dist targets
-set(ARCHIVE_NAME libdbusmenu-${QT_SUFFIX}-${dbusmenu_qt_VERSION})
-add_custom_target(dist
-    COMMAND bzr export --root=${ARCHIVE_NAME} ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    )
-
-add_custom_target(distcheck
-    COMMAND cd ${CMAKE_BINARY_DIR}
-    && rm -rf ${ARCHIVE_NAME}
-    && tar xf ${ARCHIVE_NAME}.tar.bz2
-    && mkdir ${ARCHIVE_NAME}/build
-    && cd ${ARCHIVE_NAME}/build
-    && cmake -DCMAKE_INSTALL_PREFIX=../install ..
-    && make
-    && make install
-    && make check
-    )
-add_dependencies(distcheck dist)
-
 configure_file(dbusmenu-qt.pc.in ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc @ONLY)
 
-install(FILES ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc
-        DESTINATION ${LIB_DESTINATION}/pkgconfig
-    )
+install(
+    FILES ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc
+    DESTINATION ${LIB_DESTINATION}/pkgconfig
+)
 
 add_subdirectory(src)
 add_subdirectory(tools)
@@ -99,11 +80,12 @@ if (WITH_DOC)
 
     add_custom_target(doc ALL doxygen
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        )
+    )
 
-    install(DIRECTORY ${CMAKE_BINARY_DIR}/html/
+    install(
+        DIRECTORY ${CMAKE_BINARY_DIR}/html/
         DESTINATION share/doc/libdbusmenu-${QT_SUFFIX}-doc
-        )
+    )
 endif(WITH_DOC)
 
 # Generate dbusmenu-qt-config* files
@@ -112,13 +94,13 @@ configure_package_config_file(
     ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config.cmake
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
     PATH_VARS INCLUDE_INSTALL_DIR
-    )
+)
 
 write_basic_package_version_file(
     ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config-version.cmake
     VERSION ${dbusmenu_qt_VERSION}
     COMPATIBILITY SameMajorVersion
-    )
+)
 
 # Install dbusmenu-qt-config* files
 install(FILES
@@ -126,4 +108,4 @@ install(FILES
     ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config-version.cmake
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     COMPONENT Devel
-    )
+)
