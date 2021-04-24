@@ -14,18 +14,6 @@ set(dbusmenu_qt_VERSION_MINOR 9)
 set(dbusmenu_qt_VERSION_PATCH 2)
 set(dbusmenu_qt_VERSION ${dbusmenu_qt_VERSION_MAJOR}.${dbusmenu_qt_VERSION_MINOR}.${dbusmenu_qt_VERSION_PATCH})
 
-## Lib version
-### Bump this one when a binary-incompatible change is introduced
-set(dbusmenu_qt_lib_SOVERSION 2)
-
-### Bump this one when the API is extended in a binary-compatible way
-set(dbusmenu_qt_lib_API_VERSION 6)
-
-### Bump this one when changes do not extend the API
-set(dbusmenu_qt_lib_PATCH_VERSION 0)
-
-set(dbusmenu_qt_lib_VERSION ${dbusmenu_qt_lib_SOVERSION}.${dbusmenu_qt_lib_API_VERSION}.${dbusmenu_qt_lib_PATCH_VERSION})
-
 find_package(Katie REQUIRED)
 include_directories(
     ${QT_INCLUDE_DIR}

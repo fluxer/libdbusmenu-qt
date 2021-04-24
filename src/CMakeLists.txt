@@ -70,8 +70,8 @@ configure_file(dbusmenu_version.h.in
 
 add_library(dbusmenu-${QT_SUFFIX} SHARED ${dbusmenu_qt_SRCS})
 set_target_properties(dbusmenu-${QT_SUFFIX} PROPERTIES
-    VERSION ${dbusmenu_qt_lib_VERSION}
-    SOVERSION ${dbusmenu_qt_lib_SOVERSION}
+    VERSION ${dbusmenu_qt_VERSION_MAJOR}.${dbusmenu_qt_VERSION_MINOR}
+    SOVERSION ${dbusmenu_qt_VERSION_MAJOR}
 )
 
 target_link_libraries(dbusmenu-${QT_SUFFIX}
