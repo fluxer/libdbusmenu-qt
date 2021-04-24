@@ -86,13 +86,9 @@ target_include_directories(dbusmenu-${QT_SUFFIX}
 )
 
 install(TARGETS dbusmenu-${QT_SUFFIX}
-    EXPORT dbusmenu-${QT_SUFFIX}-targets
     LIBRARY DESTINATION ${LIB_DESTINATION}
     RUNTIME DESTINATION bin
 )
-
-install(EXPORT dbusmenu-${QT_SUFFIX}-targets
-    DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
 install(DIRECTORY .
     DESTINATION ${INCLUDE_INSTALL_DIR}

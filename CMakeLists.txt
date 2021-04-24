@@ -42,10 +42,8 @@ if (__DBUSMENU_HAVE_CXX11)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif (__DBUSMENU_HAVE_CXX11)
 
-include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-set(CMAKECONFIG_INSTALL_DIR "${LIB_DESTINATION}/cmake/dbusmenu-${QT_SUFFIX}")
 set(INCLUDE_INSTALL_DIR "include/dbusmenu-${QT_SUFFIX}")
 
 configure_file(dbusmenu-qt.pc.in ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc @ONLY)
@@ -75,25 +73,3 @@ if (WITH_DOC)
         DESTINATION share/doc/libdbusmenu-${QT_SUFFIX}-doc
     )
 endif(WITH_DOC)
-
-# Generate dbusmenu-qt-config* files
-configure_package_config_file(
-    dbusmenu-qt-config.cmake.in
-    ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config.cmake
-    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
-    PATH_VARS INCLUDE_INSTALL_DIR
-)
-
-write_basic_package_version_file(
-    ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config-version.cmake
-    VERSION ${dbusmenu_qt_VERSION}
-    COMPATIBILITY SameMajorVersion
-)
-
-# Install dbusmenu-qt-config* files
-install(FILES
-    ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config.cmake
-    ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}-config-version.cmake
-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    COMPONENT Devel
-)
