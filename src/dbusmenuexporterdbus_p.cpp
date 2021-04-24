@@ -40,7 +40,6 @@ DBusMenuExporterDBus::DBusMenuExporterDBus(DBusMenuExporter *exporter)
 , m_exporter(exporter)
 , m_status("normal")
 {
-    DBusMenuTypes_register();
     new DbusmenuAdaptor(this);
 }
 

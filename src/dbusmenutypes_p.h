@@ -90,6 +90,4 @@ DBUSMENU_EXPORT const QDBusArgument &operator>>(const QDBusArgument &argument, D
 typedef QList<DBusMenuLayoutItem> DBusMenuLayoutItemList;
 
 Q_DECLARE_METATYPE(DBusMenuLayoutItemList)
-
-void DBusMenuTypes_register();
 #endif /* DBUSMENUTYPES_P_H */

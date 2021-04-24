@@ -95,12 +95,8 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, DBusMenuLayoutIte
     return argument;
 }
 
-void DBusMenuTypes_register()
+int DBusMenuTypes_register()
 {
-    static bool registered = false;
-    if (registered) {
-        return;
-    }
     qDBusRegisterMetaType<DBusMenuItem>();
     qDBusRegisterMetaType<DBusMenuItemList>();
     qDBusRegisterMetaType<DBusMenuItemKeys>();
@@ -108,5 +104,7 @@ void DBusMenuTypes_register()
     qDBusRegisterMetaType<DBusMenuLayoutItem>();
     qDBusRegisterMetaType<DBusMenuLayoutItemList>();
     qDBusRegisterMetaType<DBusMenuShortcut>();
-    registered = true;
+    return 0;
 }
+
+Q_CONSTRUCTOR_FUNCTION(DBusMenuTypes_register)
