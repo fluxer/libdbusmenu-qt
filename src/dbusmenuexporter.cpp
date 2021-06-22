@@ -472,12 +472,9 @@ QString DBusMenuExporter::iconNameForAction(QAction *action)
     QIcon icon = action->icon();
     if (action->isIconVisibleInMenu() && !icon.isNull()) {
         return icon.name();
-    } else {
-        return QString();
     }
-#else
-    return QString();
 #endif
+    return QString();
 }
 
 void DBusMenuExporter::activateAction(QAction *action)
