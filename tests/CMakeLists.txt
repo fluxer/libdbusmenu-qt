@@ -17,7 +17,7 @@ include_directories(
 macro(add_test_executable _executable)
     add_test(${_executable} ${_executable})
     add_executable(${_executable} ${ARGN})
-    target_link_libraries(${_executable} ${test_LIBRARIES}
+    target_link_libraries(${_executable} ${test_LIBRARIES})
 endmacro(add_test_executable)
 
 add_executable(slowmenu slowmenu.cpp)
