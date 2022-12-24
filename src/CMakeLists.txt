@@ -43,7 +43,7 @@ generate_export_header(dbusmenu-${QT_SUFFIX}
 install(
     TARGETS dbusmenu-${QT_SUFFIX}
     LIBRARY DESTINATION ${LIB_DESTINATION}
-    RUNTIME DESTINATION bin
+    ARCHIVE DESTINATION ${LIB_DESTINATION}
 )
 
 install(
