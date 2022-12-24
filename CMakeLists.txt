@@ -1,9 +1,14 @@
 project(dbusmenu-qt)
-cmake_minimum_required(VERSION 3.0.2)
+
+cmake_minimum_required(VERSION 3.3)
+
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_C_VISIBILITY_PRESET "hidden")
 set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
 set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+
+# enable symbols visibility preset for all targets
+cmake_policy(SET CMP0063 NEW)
 
 # Versions
 ## Package version
