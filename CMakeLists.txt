@@ -31,7 +31,7 @@ set(QT_SUFFIX "katie")
 include(GenerateExportHeader)
 include(GNUInstallDirs)
 set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-set(INCLUDE_INSTALL_DIR "include/dbusmenu-${QT_SUFFIX}")
+set(INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-${QT_SUFFIX}")
 
 configure_file(
     dbusmenu-qt.pc.in
