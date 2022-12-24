@@ -527,9 +527,6 @@ void DBusMenuImporter::slotMenuAboutToShow()
         d->m_mustEmitMenuUpdated = false;
         menuUpdated();
     }
-    if (menu == d->m_menu) {
-        menuReadyToBeShown();
-    }
 
     d->sendEvent(id, QString("opened"));
 }

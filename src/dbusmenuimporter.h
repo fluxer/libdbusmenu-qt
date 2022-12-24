@@ -94,15 +94,6 @@ Q_SIGNALS:
     void menuUpdated();
 
     /**
-     * Emitted after every aboutToShow of the root menu.
-     * This signal is deprecated and only kept to keep compatibility with
-     * dbusmenu-qt 0.3.x. New code should use updateMenu() and menuUpdated()
-     *
-     * @deprecated
-     */
-    void menuReadyToBeShown();
-
-    /**
      * Emitted when the exporter was asked to activate an action
      */
     void actionActivationRequested(QAction *);

@@ -153,7 +153,6 @@ void DBusMenuImporterTest::testDynamicMenu()
 
     // Update menu, a1 and a2 should get added
     QSignalSpy spy(&importer, SIGNAL(menuUpdated()));
-    QSignalSpy spyOld(&importer, SIGNAL(menuReadyToBeShown()));
     importer.updateMenu();
     while (spy.isEmpty()) {
         QTest::qWait(500);
@@ -174,10 +173,8 @@ void DBusMenuImporterTest::testDynamicMenu()
 
     QCOMPARE(a1OutputMenu->actions().count(), 1);
 
-    // menuUpdated() and menuReadyToBeShown() should only have been emitted
-    // once
+    // menuUpdated() should only have been emitted once
     QCOMPARE(spy.count(), 1);
-    QCOMPARE(spyOld.count(), 1);
 }
 
 void DBusMenuImporterTest::testActionActivationRequested()
