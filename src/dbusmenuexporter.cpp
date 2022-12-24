@@ -31,7 +31,6 @@
 #include <QWidgetAction>
 
 // Local
-#include "dbusmenu_config.h"
 #include "dbusmenu_p.h"
 #include "dbusmenuexporterdbus_p.h"
 #include "dbusmenuexporterprivate_p.h"
@@ -468,12 +467,10 @@ void DBusMenuExporter::doEmitLayoutUpdated()
 QString DBusMenuExporter::iconNameForAction(QAction *action)
 {
     DMRETURN_VALUE_IF_FAIL(action, QString());
-#ifdef HAVE_QICON_NAME
     QIcon icon = action->icon();
     if (action->isIconVisibleInMenu() && !icon.isNull()) {
         return icon.name();
     }
-#endif
     return QString();
 }
 

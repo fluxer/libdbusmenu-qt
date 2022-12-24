@@ -1,23 +1,3 @@
-include(CheckCXXSourceCompiles)
-
-# Check whether QIcon::name() exists. It was added in late Qt 4.7 cycle, and is
-# not present in betas.
-
-set(CMAKE_REQUIRED_INCLUDES "${QT_INCLUDE_DIR}")
-set(CMAKE_REQUIRED_LIBRARIES "${QT_QTGUI_LIBRARIES};${QT_QTCORE_LIBRARIES}")
-check_cxx_source_compiles("
-#include <QtGui/QIcon>
-int main() {
-    QIcon icon;
-    icon.name();
-    return 0;
-}
-" HAVE_QICON_NAME)
-if (NOT HAVE_QICON_NAME)
-    message(STATUS "QIcon::name() does not exist, DBusMenuExporter will not export icon names by itself")
-endif()
-configure_file(dbusmenu_config.h.in ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_config.h @ONLY)
-
 set(dbusmenu_qt_SRCS
     dbusmenu_p.cpp
     dbusmenuexporter.cpp
@@ -35,10 +15,12 @@ include_directories(
 
 qt4_add_dbus_adaptor(dbusmenu_qt_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/com.canonical.dbusmenu.xml
-    ${CMAKE_CURRENT_SOURCE_DIR}/dbusmenuexporterdbus_p.h DBusMenuExporterDBus
+    ${CMAKE_CURRENT_SOURCE_DIR}/dbusmenuexporterdbus_p.h
+    DBusMenuExporterDBus
 )
 
-configure_file(dbusmenu_version.h.in
+configure_file(
+    dbusmenu_version.h.in
     ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
 )
 
@@ -59,17 +41,20 @@ target_include_directories(dbusmenu-${QT_SUFFIX}
     INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>"
 )
 
-install(TARGETS dbusmenu-${QT_SUFFIX}
+install(
+    TARGETS dbusmenu-${QT_SUFFIX}
     LIBRARY DESTINATION ${LIB_DESTINATION}
     RUNTIME DESTINATION bin
 )
 
-install(DIRECTORY .
+install(
+    DIRECTORY .
     DESTINATION ${INCLUDE_INSTALL_DIR}
     FILES_MATCHING PATTERN "*.h"
     PATTERN "*_p.h" EXCLUDE
 )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
+install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
     DESTINATION ${INCLUDE_INSTALL_DIR}
 )
