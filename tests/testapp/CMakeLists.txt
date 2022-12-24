@@ -14,7 +14,7 @@ include_directories(
 )
 
 target_link_libraries(dbusmenubench-qtapp
-    dbusmenu-${QT_SUFFIX}
+    dbusmenu-${DBUSMENU_SUFFIX}
     ${QT_QTGUI_LIBRARY}
     ${QT_QTCORE_LIBRARY}
     ${QT_QTDBUS_LIBRARY}

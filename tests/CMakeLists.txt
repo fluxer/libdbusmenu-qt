@@ -5,7 +5,7 @@ set(test_LIBRARIES
     ${QT_QTCORE_LIBRARY}
     ${QT_QTDBUS_LIBRARY}
     ${QT_QTTEST_LIBRARY}
-    dbusmenu-${QT_SUFFIX}
+    dbusmenu-${DBUSMENU_SUFFIX}
 )
 
 include_directories(
@@ -27,7 +27,7 @@ target_link_libraries(slowmenu
     ${QT_QTGUI_LIBRARIES}
     ${QT_QTDBUS_LIBRARIES}
     ${QT_QTCORE_LIBRARIES}
-    dbusmenu-${QT_SUFFIX}
+    dbusmenu-${DBUSMENU_SUFFIX}
 )
 
 # dbusmenuexportertest

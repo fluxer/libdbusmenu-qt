@@ -24,31 +24,31 @@ configure_file(
     ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
 )
 
-add_library(dbusmenu-${QT_SUFFIX} SHARED ${dbusmenu_qt_SRCS})
-set_target_properties(dbusmenu-${QT_SUFFIX} PROPERTIES
+add_library(dbusmenu-${DBUSMENU_SUFFIX} SHARED ${dbusmenu_qt_SRCS})
+set_target_properties(dbusmenu-${DBUSMENU_SUFFIX} PROPERTIES
     VERSION ${dbusmenu_qt_VERSION_MAJOR}.${dbusmenu_qt_VERSION_MINOR}
     SOVERSION ${dbusmenu_qt_VERSION_MAJOR}
 )
 
-target_link_libraries(dbusmenu-${QT_SUFFIX}
+target_link_libraries(dbusmenu-${DBUSMENU_SUFFIX}
     ${QT_QTGUI_LIBRARIES}
     ${QT_QTDBUS_LIBRARIES}
     ${QT_QTCORE_LIBRARIES}
 )
 
-generate_export_header(dbusmenu-${QT_SUFFIX}
+generate_export_header(dbusmenu-${DBUSMENU_SUFFIX}
     BASE_NAME dbusmenu
 )
 
 install(
-    TARGETS dbusmenu-${QT_SUFFIX}
-    LIBRARY DESTINATION ${LIB_DESTINATION}
-    ARCHIVE DESTINATION ${LIB_DESTINATION}
+    TARGETS dbusmenu-${DBUSMENU_SUFFIX}
+    LIBRARY DESTINATION ${LIBRARY_DESTINATION}
+    ARCHIVE DESTINATION ${LIBRARY_DESTINATION}
 )
 
 install(
     DIRECTORY .
-    DESTINATION ${INCLUDE_INSTALL_DIR}
+    DESTINATION ${INCLUDE_DESTINATION}
     FILES_MATCHING PATTERN "*.h"
     PATTERN "*_p.h" EXCLUDE
 )
@@ -57,5 +57,5 @@ install(
     FILES
     ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
     ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_export.h
-    DESTINATION ${INCLUDE_INSTALL_DIR}
+    DESTINATION ${INCLUDE_DESTINATION}
 )

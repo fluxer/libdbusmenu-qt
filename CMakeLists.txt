@@ -26,22 +26,22 @@ include_directories(
 )
 add_definitions(${QT_DEFINITIONS})
 
-set(QT_SUFFIX "katie")
-
 include(GenerateExportHeader)
 include(GNUInstallDirs)
-set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-set(INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-${QT_SUFFIX}")
+
+set(DBUSMENU_SUFFIX "katie" CACHE STRING "Package suffix")
+set(LIBRARY_DESTINATION "${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Libraries installation path")
+set(INCLUDE_DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-${DBUSMENU_SUFFIX}" CACHE PATH "Headers installation path")
 
 configure_file(
     dbusmenu-qt.pc.in
-    ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc
+    ${CMAKE_BINARY_DIR}/dbusmenu-${DBUSMENU_SUFFIX}.pc
     @ONLY
 )
 
 install(
-    FILES ${CMAKE_BINARY_DIR}/dbusmenu-${QT_SUFFIX}.pc
-    DESTINATION ${LIB_DESTINATION}/pkgconfig
+    FILES ${CMAKE_BINARY_DIR}/dbusmenu-${DBUSMENU_SUFFIX}.pc
+    DESTINATION ${LIBRARY_DESTINATION}/pkgconfig
 )
 
 add_subdirectory(src)
