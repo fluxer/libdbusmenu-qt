@@ -28,6 +28,7 @@ add_definitions(${QT_DEFINITIONS})
 
 set(QT_SUFFIX "katie")
 
+include(GenerateExportHeader)
 include(GNUInstallDirs)
 set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 set(INCLUDE_INSTALL_DIR "include/dbusmenu-${QT_SUFFIX}")

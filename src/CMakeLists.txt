@@ -36,9 +36,8 @@ target_link_libraries(dbusmenu-${QT_SUFFIX}
     ${QT_QTCORE_LIBRARIES}
 )
 
-# Make sure linking to the target adds dbusmenu-qt install directory
-target_include_directories(dbusmenu-${QT_SUFFIX}
-    INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>"
+generate_export_header(dbusmenu-${QT_SUFFIX}
+    BASE_NAME dbusmenu
 )
 
 install(
@@ -55,6 +54,8 @@ install(
 )
 
 install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
+    FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
+    ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_export.h
     DESTINATION ${INCLUDE_INSTALL_DIR}
 )
