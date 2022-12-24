@@ -21,11 +21,9 @@
 #ifndef DBUSMENUIMPORTERTEST_H
 #define DBUSMENUIMPORTERTEST_H
 
-#define QT_GUI_LIB
-#include <QtGui>
-
 // Qt
 #include <QObject>
+#include <QtGui>
 
 // Local
 
