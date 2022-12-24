@@ -5,8 +5,8 @@ set(qtapp_SRCS
 add_executable(dbusmenubench-qtapp ${qtapp_SRCS})
 
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../src
-    ${CMAKE_CURRENT_BINARY_DIR}/../../src
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_BINARY_DIR}/src
     ${QT_INCLUDE_DIR}
     ${QT_QTCORE_INCLUDE_DIR}
     ${QT_QTGUI_INCLUDE_DIR}

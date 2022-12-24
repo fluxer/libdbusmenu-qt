@@ -45,7 +45,6 @@ install(
 )
 
 add_subdirectory(src)
-add_subdirectory(tools)
 
 if (ENABLE_TESTING)
     enable_testing()

@@ -1,3 +1,5 @@
+add_subdirectory(testapp)
+
 set(test_LIBRARIES
     ${QT_QTGUI_LIBRARY}
     ${QT_QTCORE_LIBRARY}
@@ -7,8 +9,8 @@ set(test_LIBRARIES
 )
 
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../src
-    ${CMAKE_CURRENT_BINARY_DIR}/../src
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_BINARY_DIR}/src
     ${CMAKE_CURRENT_BINARY_DIR}
     ${QT_QTTEST_INCLUDE_DIR}
     ${QT_QTDBUS_INCLUDE_DIR}
