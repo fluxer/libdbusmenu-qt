@@ -32,6 +32,7 @@ include(GNUInstallDirs)
 set(DBUSMENU_SUFFIX "katie" CACHE STRING "Package suffix")
 set(LIBRARY_DESTINATION "${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Libraries installation path")
 set(INCLUDE_DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-${DBUSMENU_SUFFIX}" CACHE PATH "Headers installation path")
+set(PKGCONFIG_DESTINATION "${LIBRARY_DESTINATION}/pkgconfig" CACHE PATH "pkg-config installation path")
 
 configure_file(
     dbusmenu-qt.pc.in
@@ -41,7 +42,7 @@ configure_file(
 
 install(
     FILES ${CMAKE_BINARY_DIR}/dbusmenu-${DBUSMENU_SUFFIX}.pc
-    DESTINATION ${LIBRARY_DESTINATION}/pkgconfig
+    DESTINATION ${PKGCONFIG_DESTINATION}
 )
 
 add_subdirectory(src)
