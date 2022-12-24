@@ -1,0 +1,4 @@
+{
+	"name": "libdbusmenu-qt" ,
+	"files": [ { "git": 1 } ]
+}
