@@ -59,4 +59,4 @@ int main(int argc, char** argv)
     return app.exec();
 }
 
-#include <slowmenu.moc>
+#include "moc_slowmenu.cpp"
